@@ -7,7 +7,7 @@
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_g7ett")
-jump_f = 116.0
+jump_f = 21.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_cqmt1")
