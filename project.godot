@@ -13,10 +13,10 @@ config_version=5
 config/name="CAT-ching"
 config/description="um jogo de corrida infinita, com um gato bizarramente bizarro, indo atrás de... Eu também não sei"
 config/version="0.0"
+config/tags=PackedStringArray("endless")
 run/main_scene="uid://x3awsq6dn7pu"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
-config/tags=PackedStringArray("endless")
 
 [editor_plugins]
 
