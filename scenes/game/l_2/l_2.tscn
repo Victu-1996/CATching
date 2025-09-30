@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkk16txhpivb4"]
+
+[ext_resource type="Script" uid="uid://cuifdov35sr1k" path="res://scenes/game/l_2/l_2.gd" id="1_fp2eo"]
+[ext_resource type="PackedScene" uid="uid://dptsky34f5yk2" path="res://objects/hud/hud.tscn" id="2_8igwd"]
+[ext_resource type="PackedScene" uid="uid://qkmxjl81o1dh" path="res://objects/spawner/spawner.tscn" id="3_dd460"]
+[ext_resource type="PackedScene" uid="uid://yxg8ps0wtdsl" path="res://objects/player/player.tscn" id="4_38g0x"]
+[ext_resource type="Texture2D" uid="uid://66mrh1b7bhtf" path="res://sprites/ground.png" id="5_wk74p"]
+[ext_resource type="PackedScene" uid="uid://drgg124ebg0wv" path="res://objects/roof/roof.tscn" id="6_e5scq"]
+[ext_resource type="PackedScene" uid="uid://mruskylkes5r" path="res://objects/death/death.tscn" id="7_ekhgf"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7h61r"]
+b = Vector2(0, 646)
+
+[node name="l_2" type="Node2D"]
+script = ExtResource("1_fp2eo")
+end = 230
+metadata/_custom_type_script = "uid://cuifdov35sr1k"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 225)
+anchor_mode = 0
+zoom = Vector2(0.754, 0.754)
+limit_left = 0
+limit_top = 0
+limit_right = 1152
+limit_bottom = 648
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="HUD" parent="Camera2D/CanvasLayer" instance=ExtResource("2_8igwd")]
+
+[node name="margin" type="Node2D" parent="."]
+position = Vector2(0, 363)
+
+[node name="left_wall" type="StaticBody2D" parent="margin"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="margin/left_wall"]
+shape = SubResource("SegmentShape2D_7h61r")
+
+[node name="right_wall" type="StaticBody2D" parent="margin"]
+position = Vector2(1927, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="margin/right_wall"]
+shape = SubResource("SegmentShape2D_7h61r")
+
+[node name="food_spawner" parent="margin" instance=ExtResource("3_dd460")]
+position = Vector2(2661, 222)
+min = 2
+type = 0
+
+[node name="food_spawner2" parent="margin" instance=ExtResource("3_dd460")]
+position = Vector2(2383, 295)
+max = 2
+type = 1
+
+[node name="player" parent="margin" instance=ExtResource("4_38g0x")]
+position = Vector2(192, 234)
+
+[node name="ground" type="Node2D" parent="margin"]
+visible = false
+position = Vector2(0, -99)
+
+[node name="par_1" type="Parallax2D" parent="margin/ground"]
+scroll_offset = Vector2(0, 595)
+repeat_size = Vector2(128, 0)
+autoscroll = Vector2(-540, 0)
+repeat_times = 61
+
+[node name="Sprite2D" type="Sprite2D" parent="margin/ground/par_1"]
+texture = ExtResource("5_wk74p")
+
+[node name="par_2" type="Parallax2D" parent="margin/ground"]
+modulate = Color(0.42, 0.14000002, 0, 1)
+top_level = true
+scroll_offset = Vector2(0, 965)
+repeat_size = Vector2(128, 0)
+autoscroll = Vector2(-550.655, 0)
+repeat_times = 95
+
+[node name="Sprite2D" type="Sprite2D" parent="margin/ground/par_2"]
+position = Vector2(0, 73)
+scale = Vector2(2.2546782, 3.6748726)
+texture = ExtResource("5_wk74p")
+
+[node name="roof" parent="margin" instance=ExtResource("6_e5scq")]
+position = Vector2(403, 423)
+
+[node name="roof2" parent="margin" instance=ExtResource("6_e5scq")]
+position = Vector2(1144, 423)
+
+[node name="spawner" parent="margin" instance=ExtResource("3_dd460")]
+position = Vector2(2373, 423)
+min = 2
+max = 3
+type = 2
+
+[node name="death" parent="." instance=ExtResource("7_ekhgf")]
+position = Vector2(765, 1237)
+scale = Vector2(134.18394, -6.1879606)

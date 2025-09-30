@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dptsky34f5yk2"]
+[gd_scene load_steps=7 format=3 uid="uid://dptsky34f5yk2"]
 
+[ext_resource type="Script" uid="uid://dk1m1h4n1nqd7" path="res://objects/hud/hud.gd" id="1_joawt"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_y7bgl"]
 [ext_resource type="Texture2D" uid="uid://bexotjrltbxpx" path="res://sprites/icon.svg" id="2_08fgm"]
 [ext_resource type="Script" uid="uid://ci4xmyxr4l6ai" path="res://objects/hud/bars.gd" id="3_hgxdy"]
@@ -15,10 +16,14 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_joawt")
 
 [node name="Virtual Joystick" parent="." instance=ExtResource("1_y7bgl")]
 modulate = Color(1, 1, 1, 0.40784314)
 layout_mode = 1
+clampzone_size = 155.0
+joystick_mode = 1
+visibility_mode = 1
 action_left = "left"
 action_right = "right"
 
@@ -29,9 +34,9 @@ action = "touch"
 
 [node name="bars" type="CenterContainer" parent="."]
 layout_mode = 0
-offset_left = 1182.0001
+offset_left = 1133.0
 offset_top = 14.000002
-offset_right = 1708.0001
+offset_right = 1659.0
 offset_bottom = 601.0
 scale = Vector2(0.408195, 0.408195)
 script = ExtResource("3_hgxdy")
@@ -48,3 +53,42 @@ layout_mode = 2
 max_value = 3.0
 value = 3.0
 texture_progress = ExtResource("5_joawt")
+
+[node name="metros" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 46.0
+offset_right = 86.0
+offset_bottom = 40.0
+
+[node name="actual" type="Label" parent="metros"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 40.0
+offset_right = 400.0
+offset_bottom = 201.0
+theme_override_font_sizes/font_size = 58
+text = "metros
+"
+
+[node name="level_percentage" type="HSlider" parent="metros"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 388.00003
+offset_top = 19.0
+offset_right = 971.0
+offset_bottom = 158.0
+grow_horizontal = 2
+scale = Vector2(0.83084565, 0.83084565)
+editable = false
+scrollable = false
+
+[node name="end" type="Label" parent="metros"]
+layout_mode = 0
+offset_left = 901.0
+offset_top = 40.0
+offset_right = 1101.0
+offset_bottom = 201.0
+theme_override_font_sizes/font_size = 58
+text = "end"

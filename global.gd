@@ -1,3 +1,5 @@
 extends Node
 
-const wspd = 13
+var wspd = 13
+var metros = 0
+var end = 100
