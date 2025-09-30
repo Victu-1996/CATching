@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dptsky34f5yk2" path="res://objects/hud/hud.tscn" id="1_0sr1o"]
 [ext_resource type="Script" uid="uid://c8djsnwoxwjbb" path="res://scenes/game/game.gd" id="1_lfrn8"]
 [ext_resource type="PackedScene" uid="uid://yxg8ps0wtdsl" path="res://objects/player/player.tscn" id="1_sul5r"]
-[ext_resource type="PackedScene" uid="uid://34fw8n4s4mvj" path="res://objects/spawner/spawner.tscn" id="2_7h61r"]
 [ext_resource type="PackedScene" uid="uid://qkmxjl81o1dh" path="res://objects/food_spawner/food_spawner.tscn" id="4_kelw5"]
+[ext_resource type="Texture2D" uid="uid://66mrh1b7bhtf" path="res://sprites/ground.png" id="6_5i0tg"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_7h61r"]
 b = Vector2(0, 646)
@@ -44,11 +44,36 @@ position = Vector2(1927, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="margin/right_wall"]
 shape = SubResource("SegmentShape2D_7h61r")
 
-[node name="spawner" parent="margin" instance=ExtResource("2_7h61r")]
-position = Vector2(2003, 403)
-
 [node name="food_spawner" parent="margin" instance=ExtResource("4_kelw5")]
 position = Vector2(2281, 330)
 
+[node name="food_spawner2" parent="margin" instance=ExtResource("4_kelw5")]
+position = Vector2(2003, 403)
+max = 2
+type = 1
+
 [node name="player" parent="margin" instance=ExtResource("1_sul5r")]
 position = Vector2(192, 234)
+
+[node name="ground" type="Node2D" parent="."]
+
+[node name="par_1" type="Parallax2D" parent="ground"]
+scroll_offset = Vector2(0, 595)
+repeat_size = Vector2(128, 0)
+autoscroll = Vector2(-540, 0)
+repeat_times = 61
+
+[node name="Sprite2D" type="Sprite2D" parent="ground/par_1"]
+texture = ExtResource("6_5i0tg")
+
+[node name="par_2" type="Parallax2D" parent="ground"]
+modulate = Color(0.42, 0.14000002, 0, 1)
+scroll_offset = Vector2(0, 668)
+repeat_size = Vector2(128, 0)
+autoscroll = Vector2(-550.655, 0)
+repeat_times = 95
+
+[node name="Sprite2D" type="Sprite2D" parent="ground/par_2"]
+position = Vector2(0, 32)
+scale = Vector2(1.28199, 2.0895)
+texture = ExtResource("6_5i0tg")

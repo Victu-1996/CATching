@@ -1,3 +1,3 @@
 extends Node
 
-const wspd = 9
+const wspd = 13

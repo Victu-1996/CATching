@@ -2,5 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bemdxmogrb7r" path="res://objects/food_spawner/food_spawner.gd" id="1_lnyhh"]
 
-[node name="food_spawner" type="Marker2D"]
+[node name="spawner" type="Marker2D"]
 script = ExtResource("1_lnyhh")
+type = 0
