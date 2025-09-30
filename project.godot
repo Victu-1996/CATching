@@ -16,7 +16,12 @@ config/version="0.0"
 config/tags=PackedStringArray("endless")
 run/main_scene="uid://x3awsq6dn7pu"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://sprites/icon.svg"
+
+[autoload]
+
+stats="*res://objects/player/stats.gd"
+global="*res://global.gd"
 
 [editor_plugins]
 

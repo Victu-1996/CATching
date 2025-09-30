@@ -25,11 +25,11 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("left"):
 		# se for pra esquerda a direção é negativa
 		dir = -1
-		spd = 7
+		spd = global.wspd
 	elif Input.is_action_pressed("right"):
 		# como  o x tá sempre somando por Dir*spd então se a Dir for negativa a spd vai ser negativa
 		dir = 1
-		spd = 5
+		spd = global.wspd-2
 	else:
 		# se nada então nada
 		dir = 0
