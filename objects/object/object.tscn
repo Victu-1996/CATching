@@ -15,4 +15,9 @@ shape = SubResource("RectangleShape2D_2iobj")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_w8t6t")
 
+[node name="ground" type="RayCast2D" parent="."]
+position = Vector2(0, 63)
+target_position = Vector2(-1, 87)
+collide_with_areas = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

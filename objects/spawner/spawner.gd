@@ -10,10 +10,10 @@ var choose = 0
 	preload("res://objects/object/object.tscn"),
 	preload("res://objects/roof/roof.tscn")
 	]
-@export_category("timer")
+@export_group("timer")
 @export var min := 1
 @export var max := 5
-@export_category("type")
+@export_group("type")
 @export_enum("food","obstacles","roof") var type
 func _ready() -> void:
 	randomize()

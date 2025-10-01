@@ -1,10 +1,12 @@
 extends Node2D
 class_name level
+@onready var fade = $Camera2D/CanvasLayer/fade
 var metros = 0
 @export var end:int = 100
 @export_file("*.tscn") var next
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	fade._in()
 	$margin/ground/par_1.autoscroll.x = -global.wspd*60
 	$margin/ground/par_2.autoscroll.x = (-global.wspd*60)-200
 
@@ -19,7 +21,7 @@ func _process(delta: float) -> void:
 	if stats.hp == 0:
 		reset()
 	if metros >= end:
-		win()
+		fade.out()
 
 func reset():
 	get_tree().reload_current_scene()
@@ -29,3 +31,7 @@ func reset():
 
 func win():
 	get_tree().quit()
+
+
+func _on_fade_finished() -> void:
+	win()

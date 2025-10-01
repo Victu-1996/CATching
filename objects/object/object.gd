@@ -7,6 +7,13 @@ var spd = global.wspd
 func _process(delta: float) -> void:
 	# x vai tar sempre diminuindo pela velocidade
 	simple_move()
+	if !$ground.is_colliding():
+		self.monitoring = false
+		self.visible = false
+	else:
+		self.monitoring = true
+		self.visible = true
+
 
 
 

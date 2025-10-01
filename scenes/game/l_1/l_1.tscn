@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://x3awsq6dn7pu"]
+[gd_scene load_steps=9 format=3 uid="uid://x3awsq6dn7pu"]
 
 [ext_resource type="Script" uid="uid://c8djsnwoxwjbb" path="res://scenes/game/l_1/l_1.gd" id="1_7stfr"]
+[ext_resource type="PackedScene" uid="uid://d33s810cxb85v" path="res://objects/fade/fade.tscn" id="2_0hefq"]
 [ext_resource type="PackedScene" uid="uid://dptsky34f5yk2" path="res://objects/hud/hud.tscn" id="2_dyn5r"]
 [ext_resource type="PackedScene" uid="uid://qkmxjl81o1dh" path="res://objects/spawner/spawner.tscn" id="3_8opql"]
 [ext_resource type="PackedScene" uid="uid://yxg8ps0wtdsl" path="res://objects/player/player.tscn" id="4_0ow13"]
@@ -9,8 +10,8 @@
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_7h61r"]
 b = Vector2(0, 646)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0sr1o"]
-distance = -456.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hefq"]
+size = Vector2(303.6026, 1.9767985)
 
 [node name="l_1" type="Node2D"]
 script = ExtResource("1_7stfr")
@@ -30,6 +31,8 @@ limit_bottom = 648
 
 [node name="HUD" parent="Camera2D/CanvasLayer" instance=ExtResource("2_dyn5r")]
 
+[node name="fade" parent="Camera2D/CanvasLayer" instance=ExtResource("2_0hefq")]
+
 [node name="margin" type="Node2D" parent="."]
 position = Vector2(0, 363)
 
@@ -42,8 +45,9 @@ shape = SubResource("SegmentShape2D_7h61r")
 position = Vector2(552, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="margin/floor"]
-position = Vector2(0, -1.9073486e-06)
-shape = SubResource("WorldBoundaryShape2D_0sr1o")
+position = Vector2(1386.7664, 529.5)
+scale = Vector2(13.44675, -72.33917)
+shape = SubResource("RectangleShape2D_0hefq")
 
 [node name="right_wall" type="StaticBody2D" parent="margin"]
 position = Vector2(1927, 0)
@@ -52,12 +56,12 @@ position = Vector2(1927, 0)
 shape = SubResource("SegmentShape2D_7h61r")
 
 [node name="food_spawner" parent="margin" instance=ExtResource("3_8opql")]
-position = Vector2(2661, 330)
+position = Vector2(3214, 330)
 min = 2
 type = 0
 
 [node name="food_spawner2" parent="margin" instance=ExtResource("3_8opql")]
-position = Vector2(2383, 403)
+position = Vector2(2936, 384)
 max = 2
 type = 1
 
@@ -88,3 +92,5 @@ repeat_times = 95
 position = Vector2(0, 73)
 scale = Vector2(2.2546782, 3.6748726)
 texture = ExtResource("5_w331c")
+
+[connection signal="fade_finished" from="Camera2D/CanvasLayer/fade" to="." method="_on_fade_finished"]

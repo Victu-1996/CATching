@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkk16txhpivb4"]
+[gd_scene load_steps=10 format=3 uid="uid://bkk16txhpivb4"]
 
 [ext_resource type="Script" uid="uid://cuifdov35sr1k" path="res://scenes/game/l_2/l_2.gd" id="1_fp2eo"]
 [ext_resource type="PackedScene" uid="uid://dptsky34f5yk2" path="res://objects/hud/hud.tscn" id="2_8igwd"]
+[ext_resource type="PackedScene" uid="uid://d33s810cxb85v" path="res://objects/fade/fade.tscn" id="2_637as"]
 [ext_resource type="PackedScene" uid="uid://qkmxjl81o1dh" path="res://objects/spawner/spawner.tscn" id="3_dd460"]
 [ext_resource type="PackedScene" uid="uid://yxg8ps0wtdsl" path="res://objects/player/player.tscn" id="4_38g0x"]
 [ext_resource type="Texture2D" uid="uid://66mrh1b7bhtf" path="res://sprites/ground.png" id="5_wk74p"]
@@ -29,6 +30,8 @@ limit_bottom = 648
 
 [node name="HUD" parent="Camera2D/CanvasLayer" instance=ExtResource("2_8igwd")]
 
+[node name="fade" parent="Camera2D/CanvasLayer" instance=ExtResource("2_637as")]
+
 [node name="margin" type="Node2D" parent="."]
 position = Vector2(0, 363)
 
@@ -44,12 +47,12 @@ position = Vector2(1927, 0)
 shape = SubResource("SegmentShape2D_7h61r")
 
 [node name="food_spawner" parent="margin" instance=ExtResource("3_dd460")]
-position = Vector2(2661, 222)
+position = Vector2(3214, 222)
 min = 2
 type = 0
 
 [node name="food_spawner2" parent="margin" instance=ExtResource("3_dd460")]
-position = Vector2(2383, 295)
+position = Vector2(2936, 295)
 max = 2
 type = 1
 
@@ -89,7 +92,7 @@ position = Vector2(403, 423)
 position = Vector2(1144, 423)
 
 [node name="spawner" parent="margin" instance=ExtResource("3_dd460")]
-position = Vector2(2373, 423)
+position = Vector2(2926, 423)
 min = 2
 max = 3
 type = 2
@@ -97,3 +100,5 @@ type = 2
 [node name="death" parent="." instance=ExtResource("7_ekhgf")]
 position = Vector2(765, 1237)
 scale = Vector2(134.18394, -6.1879606)
+
+[connection signal="fade_finished" from="Camera2D/CanvasLayer/fade" to="." method="_on_fade_finished"]

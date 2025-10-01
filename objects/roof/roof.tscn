@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://bok8sk5uhtpms" path="res://objects/roof/roof.gd" id="1_bpfat"]
 [ext_resource type="Texture2D" uid="uid://66mrh1b7bhtf" path="res://sprites/ground.png" id="2_uey7r"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ru4uo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uey7r"]
 atlas = ExtResource("2_uey7r")
-region = Rect2(0, 38, 128, 90)
+region = Rect2(0, 39, 128, 89)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ru4uo"]
 
@@ -17,10 +17,10 @@ metadata/_custom_type_script = "uid://vb6fsijnbqg"
 scale = Vector2(2.2005055, 1.1119957)
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-texture_filter = 1
+texture_filter = 5
 texture_repeat = 3
-scale = Vector2(4.6029053, 0.8938953)
-texture = SubResource("AtlasTexture_ru4uo")
+scale = Vector2(4.608, 1.279)
+texture = SubResource("AtlasTexture_uey7r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 scale = Vector2(29.45003, 5.61858)

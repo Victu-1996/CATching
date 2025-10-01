@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dptsky34f5yk2"]
+[gd_scene load_steps=12 format=3 uid="uid://dptsky34f5yk2"]
 
 [ext_resource type="Script" uid="uid://dk1m1h4n1nqd7" path="res://objects/hud/hud.gd" id="1_joawt"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_y7bgl"]
@@ -6,6 +6,48 @@
 [ext_resource type="Script" uid="uid://ci4xmyxr4l6ai" path="res://objects/hud/bars.gd" id="3_hgxdy"]
 [ext_resource type="Texture2D" uid="uid://mejivnpy6soj" path="res://sprites/paw_outline.png" id="4_e0gd4"]
 [ext_resource type="Texture2D" uid="uid://dsplemitphjwk" path="res://sprites/paw.png" id="5_joawt"]
+[ext_resource type="Texture2D" uid="uid://btlbqp6ucfp0d" path="res://sprites/position.png" id="7_w0vgd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxlye"]
+atlas = ExtResource("7_w0vgd")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0vgd"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 10
+border_width_right = 10
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cxlye"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_right = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lc05j"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_right = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -81,6 +123,14 @@ offset_right = 971.0
 offset_bottom = 158.0
 grow_horizontal = 2
 scale = Vector2(0.83084565, 0.83084565)
+theme_override_constants/center_grabber = 1
+theme_override_constants/grabber_offset = -10
+theme_override_icons/grabber = SubResource("AtlasTexture_cxlye")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_cxlye")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_cxlye")
+theme_override_styles/slider = SubResource("StyleBoxFlat_w0vgd")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_cxlye")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_lc05j")
 editable = false
 scrollable = false
 
