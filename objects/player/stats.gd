@@ -20,3 +20,7 @@ func _process(delta: float) -> void:
 			starve_time = starve_max
 	else:
 		starve_time = starve_max
+	
+func reset():
+	hp = hp_max
+	hungry = hungry_max

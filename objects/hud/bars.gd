@@ -1,4 +1,4 @@
-extends CenterContainer
+extends Control
 
 @onready var hungry= $hungry
 @onready var life = $life

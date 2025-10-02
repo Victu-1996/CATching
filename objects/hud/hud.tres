@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dgmtg473x56o7"]
+
+[ext_resource type="FontFile" uid="uid://i5okw4yhiey4" path="res://fonts/FreckleFace-Regular.ttf" id="1_ykyv5"]
+
+[resource]
+Label/font_sizes/font_size = 58
+Label/fonts/font = ExtResource("1_ykyv5")

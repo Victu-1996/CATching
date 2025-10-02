@@ -1,4 +1,44 @@
-[gd_scene format=3 uid="uid://8yobbu0gjj1i"]
+[gd_scene load_steps=7 format=3 uid="uid://8yobbu0gjj1i"]
+
+[ext_resource type="Script" uid="uid://b7k0xg7f33m3s" path="res://scenes/Main Menu/main_menu.gd" id="1_1o70l"]
+[ext_resource type="Texture2D" uid="uid://c5e5tkwygrnhj" path="res://sprites/newspaper.png" id="1_gn8lm"]
+[ext_resource type="Theme" uid="uid://bjbxhoeihjrsh" path="res://scenes/Main Menu/main_Buttons.tres" id="2_hk6sr"]
+
+[sub_resource type="Animation" id="Animation_iscfu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-311.5, -24)]
+}
+
+[sub_resource type="Animation" id="Animation_1o70l"]
+resource_name = "pull"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.96666664),
+"transitions": PackedFloat32Array(0.1695595, 1),
+"update": 0,
+"values": [Vector2(-311.5, 940), Vector2(-311.5, -24)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3e4a6"]
+_data = {
+&"RESET": SubResource("Animation_iscfu"),
+&"pull": SubResource("Animation_1o70l")
+}
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -9,3 +49,94 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_1o70l")
+game = "uid://x3awsq6dn7pu"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.59, 0.30483332, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -311.5
+offset_top = -24.0
+offset_right = 228.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 242
+theme_override_constants/margin_right = 242
+
+[node name="paper" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_gn8lm")
+
+[node name="content" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 466
+theme_override_constants/margin_top = 142
+theme_override_constants/margin_right = 466
+theme_override_constants/margin_bottom = 160
+
+[node name="list" type="VBoxContainer" parent="MarginContainer/content"]
+layout_mode = 2
+alignment = 1
+
+[node name="title" type="Label" parent="MarginContainer/content/list"]
+layout_mode = 2
+theme = ExtResource("2_hk6sr")
+theme_override_font_sizes/font_size = 101
+text = "CATching"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/content/list"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 66
+
+[node name="start" type="Button" parent="MarginContainer/content/list"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_hk6sr")
+text = "start"
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/content/list"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="options" type="Button" parent="MarginContainer/content/list"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_hk6sr")
+text = "options"
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/content/list"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="exit" type="Button" parent="MarginContainer/content/list"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_hk6sr")
+text = "exit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3e4a6")
+}
+autoplay = "pull"
+
+[connection signal="pressed" from="MarginContainer/content/list/start" to="." method="_on_start"]
+[connection signal="pressed" from="MarginContainer/content/list/options" to="." method="_on_options"]
+[connection signal="pressed" from="MarginContainer/content/list/exit" to="." method="_on_exit"]
