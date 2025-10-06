@@ -2,9 +2,10 @@ extends Area2D
 class_name object
 # velocidade
 var spd = global.wspd
-
+var rspd = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	rspd = spd*delta
 	# x vai tar sempre diminuindo pela velocidade
 	simple_move()
 	if !$ground.is_colliding():
@@ -23,4 +24,4 @@ func _on_body_entered(body: Node2D) -> void:
 		$CollisionShape2D.queue_free()
 
 func simple_move():
-	global_position.x -= spd
+	global_position.x -= rspd

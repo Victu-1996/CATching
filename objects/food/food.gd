@@ -7,7 +7,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	global_position.x -= spd
+	global_position.x -= spd*delta
 	
 
 func _on_body_entered(body: Node2D) -> void:

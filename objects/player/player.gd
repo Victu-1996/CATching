@@ -9,7 +9,7 @@ var spd = 5
 # jump force (força do pulo)
 @export_range(1,400,1) var jump_f:float
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	# o x vai tá sempre somando com a direção vezes a velocidade
 	global_position.x += dir*spd
 	# o y vai tá sempre somando pela gravidade
@@ -25,11 +25,11 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("left"):
 		# se for pra esquerda a direção é negativa
 		dir = -1
-		spd = global.wspd
+		spd = global.wspd*delta
 	elif Input.is_action_pressed("right"):
 		# como  o x tá sempre somando por Dir*spd então se a Dir for negativa a spd vai ser negativa
 		dir = 1
-		spd = global.wspd-2
+		spd = (global.wspd-2)*delta
 	else:
 		# se nada então nada
 		dir = 0

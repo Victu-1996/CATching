@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://halhyuljvhtv"]
+
+[ext_resource type="Script" uid="uid://dbvo7ax32fngr" path="res://objects/death screen/death_screen.gd" id="1_cggye"]
+[ext_resource type="FontFile" uid="uid://i5okw4yhiey4" path="res://fonts/FreckleFace-Regular.ttf" id="1_yr8w1"]
+[ext_resource type="FontFile" uid="uid://btn8yeiyxfta1" path="res://fonts/CourierPrime-Regular.ttf" id="3_cggye"]
+
+[node name="death_screen" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cggye")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0.5372549)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 82
+theme_override_constants/margin_bottom = 265
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_fonts/font = ExtResource("1_yr8w1")
+theme_override_font_sizes/font_size = 116
+text = "você morreu!?"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_cggye")
+theme_override_font_sizes/font_size = 61
+text = "causa da morte"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="reiniciar" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_cggye")
+theme_override_font_sizes/font_size = 54
+text = "reiniciar"
+
+[node name="sair" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_cggye")
+theme_override_font_sizes/font_size = 54
+text = "sair
+"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/reiniciar" to="." method="_on_reiniciar"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/sair" to="." method="_on_sair"]

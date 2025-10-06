@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4s487j3fk61c"]
+
+[ext_resource type="FontFile" uid="uid://i5okw4yhiey4" path="res://fonts/FreckleFace-Regular.ttf" id="1_n7rju"]
+[ext_resource type="FontFile" uid="uid://ds4w2e6dmdmxe" path="res://fonts/SyneMono-Regular.ttf" id="2_pcjvl"]
+
+[node name="win_screen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3254902)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="t1" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_n7rju")
+theme_override_font_sizes/font_size = 193
+text = "vitoria"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="st1" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_pcjvl")
+theme_override_font_sizes/font_size = 61
+text = "miau miau"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2

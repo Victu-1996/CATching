@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://l77dr6xvmk3s"]
+
+[ext_resource type="Texture2D" uid="uid://bwg3pbp8l755k" path="res://sprites/menu button.png" id="1_70plp"]
+[ext_resource type="Script" uid="uid://de47n14yc7ghd" path="res://objects/pause button/pause_button.gd" id="2_pr8pd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70plp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="pause_button" type="Button"]
+process_mode = 3
+offset_left = 57.000008
+offset_top = 12.000002
+offset_right = 193.0
+offset_bottom = 148.0
+scale = Vector2(1.385015, 1.385015)
+theme_override_colors/font_color = Color(0.88, 0.88, 0.88, 0)
+theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 0)
+theme_override_colors/font_disabled_color = Color(0.88, 0.88, 0.88, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0)
+theme_override_styles/focus = SubResource("StyleBoxFlat_70plp")
+icon = ExtResource("1_70plp")
+flat = true
+script = ExtResource("2_pr8pd")

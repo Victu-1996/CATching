@@ -22,6 +22,7 @@ config/icon="res://sprites/icon.svg"
 
 stats="*res://objects/player/stats.gd"
 global="*res://global.gd"
+signals="*res://signals.gd"
 
 [display]
 
@@ -34,9 +35,24 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=4
 
+[editor]
+
+movie_writer/movie_file="/storage/emulated/0/Documents/Godot/cat-ching/laele.avi"
+movie_writer/disable_vsync=true
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/virtual_joystick/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "gray",
+"res://fonts/": "orange",
+"res://objects/": "yellow",
+"res://scenes/": "green",
+"res://sprites/": "purple"
+}
 
 [input]
 

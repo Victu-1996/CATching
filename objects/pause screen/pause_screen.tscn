@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=3 uid="uid://xsc8tumwmo27"]
+
+[ext_resource type="Script" uid="uid://bki5ykmo2jmtm" path="res://objects/pause screen/pause_screen.gd" id="1_rf7h5"]
+[ext_resource type="Texture2D" uid="uid://c5e5tkwygrnhj" path="res://sprites/newspaper.png" id="2_ugeuw"]
+
+[sub_resource type="Animation" id="Animation_5u0ja"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -24)]
+}
+
+[sub_resource type="Animation" id="Animation_78rw0"]
+resource_name = "page_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1045)]
+}
+
+[sub_resource type="Animation" id="Animation_2lk0l"]
+resource_name = "page_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.13413583, 1),
+"update": 0,
+"values": [Vector2(0, 1045), Vector2(0, -24)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_udakn"]
+_data = {
+&"RESET": SubResource("Animation_5u0ja"),
+&"page_down": SubResource("Animation_78rw0"),
+&"page_up": SubResource("Animation_2lk0l")
+}
+
+[node name="pause_screen" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rf7h5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.37254903)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ugeuw")
+
+[node name="page_up" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_udakn")
+}

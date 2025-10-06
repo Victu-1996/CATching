@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfxr3s25wgqyw"]
+
+[ext_resource type="Texture2D" uid="uid://bfk0c3gu75x0b" path="res://sprites/box.png" id="2_adad5"]
+
+[sub_resource type="GDScript" id="GDScript_2kn5q"]
+script/source = "extends object
+
+
+func _ready() -> void:
+	pass
+
+func _process(delta: float) -> void:
+	global_position.x -= global.wspd*delta
+
+
+
+func _on_body(body: Node2D) -> void:
+	if body.is_in_group(\"player\"):
+		signals.finished.emit()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mufa"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2kn5q"]
+a = Vector2(-49, -72)
+b = Vector2(-33, 551)
+
+[node name="box" type="Area2D"]
+script = SubResource("GDScript_2kn5q")
+metadata/_custom_type_script = "uid://vb6fsijnbqg"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5399904, 0.5399904)
+texture = ExtResource("2_adad5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(8.001702, 5.1096315)
+shape = SubResource("RectangleShape2D_0mufa")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(115, -497)
+shape = SubResource("SegmentShape2D_2kn5q")
+
+[connection signal="body_entered" from="." to="." method="_on_body"]

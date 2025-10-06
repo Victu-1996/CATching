@@ -1,11 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://x3awsq6dn7pu"]
+[gd_scene load_steps=14 format=3 uid="uid://x3awsq6dn7pu"]
 
 [ext_resource type="Script" uid="uid://c8djsnwoxwjbb" path="res://scenes/game/l_1/l_1.gd" id="1_7stfr"]
 [ext_resource type="PackedScene" uid="uid://d33s810cxb85v" path="res://objects/fade/fade.tscn" id="2_0hefq"]
 [ext_resource type="PackedScene" uid="uid://dptsky34f5yk2" path="res://objects/hud/hud.tscn" id="2_dyn5r"]
 [ext_resource type="PackedScene" uid="uid://qkmxjl81o1dh" path="res://objects/spawner/spawner.tscn" id="3_8opql"]
+[ext_resource type="PackedScene" uid="uid://xsc8tumwmo27" path="res://objects/pause screen/pause_screen.tscn" id="3_ci1mj"]
 [ext_resource type="PackedScene" uid="uid://yxg8ps0wtdsl" path="res://objects/player/player.tscn" id="4_0ow13"]
 [ext_resource type="Texture2D" uid="uid://66mrh1b7bhtf" path="res://sprites/ground.png" id="5_w331c"]
+[ext_resource type="Texture2D" uid="uid://dant4jffmlfr" path="res://sprites/map.png" id="6_o4tqk"]
+[ext_resource type="PackedScene" uid="uid://halhyuljvhtv" path="res://objects/death screen/death_screen.tscn" id="7_ci1mj"]
+[ext_resource type="PackedScene" uid="uid://l77dr6xvmk3s" path="res://objects/pause button/pause_button.tscn" id="7_i3g5o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnb7f"]
+atlas = ExtResource("6_o4tqk")
+region = Rect2(448, 147, 128, 42)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_7h61r"]
 b = Vector2(0, 646)
@@ -13,10 +21,30 @@ b = Vector2(0, 646)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hefq"]
 size = Vector2(303.6026, 1.9767985)
 
-[node name="l_1" type="Node2D"]
+[node name="l_1" type="Node2D" node_paths=PackedStringArray("death_screen")]
 script = ExtResource("1_7stfr")
 end = 140
 next = "uid://bkk16txhpivb4"
+death_screen = NodePath("Camera2D/CanvasLayer/death_screen")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -269.99994
+offset_top = -183.00006
+offset_right = 801.00006
+offset_bottom = 253.99994
+scale = Vector2(2.4662337, 3.8923519)
+size_flags_horizontal = 3
+color = Color(0.14117648, 0.28627452, 0.85882354, 1)
+
+[node name="clouds" type="Parallax2D" parent="."]
+scroll_offset = Vector2(0, 559)
+repeat_size = Vector2(512.527, 0)
+autoscroll = Vector2(-270, 0)
+repeat_times = 246
+
+[node name="Sprite2D" type="Sprite2D" parent="clouds"]
+scale = Vector2(4.203, 4.203)
+texture = SubResource("AtlasTexture_rnb7f")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 225)
@@ -32,6 +60,15 @@ limit_bottom = 648
 [node name="HUD" parent="Camera2D/CanvasLayer" instance=ExtResource("2_dyn5r")]
 
 [node name="fade" parent="Camera2D/CanvasLayer" instance=ExtResource("2_0hefq")]
+
+[node name="pause_screen" parent="Camera2D/CanvasLayer" instance=ExtResource("3_ci1mj")]
+
+[node name="pause_button" parent="Camera2D/CanvasLayer" instance=ExtResource("7_i3g5o")]
+toggle_mode = true
+script = null
+
+[node name="death_screen" parent="Camera2D/CanvasLayer" instance=ExtResource("7_ci1mj")]
+visible = false
 
 [node name="margin" type="Node2D" parent="."]
 position = Vector2(0, 363)
@@ -65,6 +102,10 @@ position = Vector2(2936, 384)
 max = 2
 type = 1
 
+[node name="spawner" parent="margin" instance=ExtResource("3_8opql")]
+position = Vector2(2936, 384)
+type = 3
+
 [node name="player" parent="margin" instance=ExtResource("4_0ow13")]
 position = Vector2(192, 234)
 
@@ -85,7 +126,7 @@ modulate = Color(0.42, 0.14000002, 0, 1)
 top_level = true
 scroll_offset = Vector2(0, 965)
 repeat_size = Vector2(128, 0)
-autoscroll = Vector2(-550.655, 0)
+autoscroll = Vector2(-1101.31, 0)
 repeat_times = 95
 
 [node name="Sprite2D" type="Sprite2D" parent="margin/ground/par_2"]
@@ -94,3 +135,4 @@ scale = Vector2(2.2546782, 3.6748726)
 texture = ExtResource("5_w331c")
 
 [connection signal="fade_finished" from="Camera2D/CanvasLayer/fade" to="." method="_on_fade_finished"]
+[connection signal="toggled" from="Camera2D/CanvasLayer/pause_button" to="Camera2D/CanvasLayer/pause_screen" method="_on_pause"]

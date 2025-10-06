@@ -3,7 +3,11 @@ extends Control
 @export_file("*.tscn") var game:String
 @export_file("*.tscn") var options
 
+func _ready() -> void:
+	get_tree().paused = true
+
 func _on_start() -> void:
+	get_tree().paused = false
 	get_tree().change_scene_to_file(game)
 
 
