@@ -9,15 +9,10 @@ var metros = 0
 func _ready() -> void:
 	stats.hungry = stats.hungry_max
 	stats.hp = stats.hp_max
-	signals.finished.connect(fin)
 	fede._in()
+	signals.next.connect(win)
 	signals.restart.connect(reset)
 	$Camera2D/CanvasLayer/death_screen.visible = false
-
-
-func fin():
-	fede.out()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

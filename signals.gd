@@ -1,5 +1,6 @@
 extends Node
 
-signal finished
+signal finished(do:bool)
 signal dead
 signal restart
+signal next

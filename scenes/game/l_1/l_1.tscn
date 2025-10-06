@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://x3awsq6dn7pu"]
+[gd_scene load_steps=15 format=3 uid="uid://x3awsq6dn7pu"]
 
 [ext_resource type="Script" uid="uid://c8djsnwoxwjbb" path="res://scenes/game/l_1/l_1.gd" id="1_7stfr"]
 [ext_resource type="PackedScene" uid="uid://d33s810cxb85v" path="res://objects/fade/fade.tscn" id="2_0hefq"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dant4jffmlfr" path="res://sprites/map.png" id="6_o4tqk"]
 [ext_resource type="PackedScene" uid="uid://halhyuljvhtv" path="res://objects/death screen/death_screen.tscn" id="7_ci1mj"]
 [ext_resource type="PackedScene" uid="uid://l77dr6xvmk3s" path="res://objects/pause button/pause_button.tscn" id="7_i3g5o"]
+[ext_resource type="PackedScene" uid="uid://b4s487j3fk61c" path="res://objects/Win screen/win_screen.tscn" id="8_d2s7f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rnb7f"]
 atlas = ExtResource("6_o4tqk")
@@ -68,7 +69,8 @@ toggle_mode = true
 script = null
 
 [node name="death_screen" parent="Camera2D/CanvasLayer" instance=ExtResource("7_ci1mj")]
-visible = false
+
+[node name="win_screen" parent="Camera2D/CanvasLayer" instance=ExtResource("8_d2s7f")]
 
 [node name="margin" type="Node2D" parent="."]
 position = Vector2(0, 363)

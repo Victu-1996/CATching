@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 	if hungry <= 0:
 		starve_time-=1
 		if starve_time <= 0:
+			global.d_type = "morreu de fome ;-;"
 			hp-=1
 			starve_time = starve_max
 	else:

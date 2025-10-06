@@ -5,6 +5,8 @@ extends Control
 func _ready() -> void:
 	signals.dead.connect(dread)
 
+func _process(delta: float) -> void:
+	$MarginContainer/VBoxContainer/Label2.text = global.d_type
 func dread():
 	self.visible = true
 	get_tree().paused = true

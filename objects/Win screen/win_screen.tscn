@@ -1,16 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4s487j3fk61c"]
+[gd_scene load_steps=5 format=3 uid="uid://b4s487j3fk61c"]
 
 [ext_resource type="FontFile" uid="uid://i5okw4yhiey4" path="res://fonts/FreckleFace-Regular.ttf" id="1_n7rju"]
+[ext_resource type="Script" uid="uid://dnor8g32wnyan" path="res://objects/Win screen/win_screen.gd" id="1_rams2"]
 [ext_resource type="FontFile" uid="uid://ds4w2e6dmdmxe" path="res://fonts/SyneMono-Regular.ttf" id="2_pcjvl"]
+[ext_resource type="FontFile" uid="uid://b3abdef4hrgsx" path="res://fonts/CourierPrime-Bold.ttf" id="3_pcjvl"]
 
 [node name="win_screen" type="Control"]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rams2")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -48,7 +52,19 @@ vertical_alignment = 1
 
 [node name="VBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer"]
+[node name="sair" type="Button" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pcjvl")
+theme_override_font_sizes/font_size = 54
+text = "sair"
+
+[node name="proxima" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pcjvl")
+theme_override_font_sizes/font_size = 54
+text = "proxima"
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/sair" to="." method="_on_sair"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/proxima" to="." method="_on_proxima"]
